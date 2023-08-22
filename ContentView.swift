@@ -5,7 +5,8 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Image("dog")
-            Text("Hello, world!")
+            Text("Hello, Bryan!")
+                .bold()
         }
     }
 }
