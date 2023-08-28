@@ -19,18 +19,30 @@ let schedule = [
 
 struct ContentView: View {
     var body: some View {
-        Table(schedule) {
-            TableColumn("Class", value: \.className)
-            TableColumn("Period") { classInstance in
-                Text(String(classInstance.period))
+        if #available(iOS 16.0, *) {
+            Text("Runnig 16+")
+            
+            Table(schedule) {
+                TableColumn("Class", value: \.className)
+                TableColumn("Period") { classInstance in
+                    Text(String(classInstance.period))
+                }
+            }
+        } else {
+            List(schedule) { classInstance in
+                HStack {
+                    Text(classInstance.className)
+                    Spacer()
+                    Text(String(classInstance.period))
+                }
             }
         }
     }
 }
 
 
-//struct ContentViewForcePreview: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentViewForcePreview: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
