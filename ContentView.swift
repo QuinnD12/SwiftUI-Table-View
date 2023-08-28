@@ -41,8 +41,8 @@ struct ContentView: View {
     }
 }
 
-//struct ContentViewForcePreview: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentViewForcePreview: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
