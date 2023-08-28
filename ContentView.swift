@@ -19,27 +19,27 @@ let schedule = [
 
 struct ContentView: View {
     var body: some View {
-        HStack {
-            Text("Class")
-                .bold()
-                .padding()
-            Spacer()
-            Text("Period")
-                .bold()
-                .padding()
-        }
-        
-        List(schedule) { classInstance in
+        List {
             HStack {
-                Text(classInstance.className)
+                Text("Class")
+                    .font(.title)
+                    .bold()
                 Spacer()
-                Text(String(classInstance.period))
+                Text("Period")
+                    .font(.title)
+                    .bold()
+            }
+            
+            ForEach(schedule) { classInstance in
+                HStack {
+                    Text(classInstance.className)
+                    Spacer()
+                    Text(String(classInstance.period))
+                }
             }
         }
     }
 }
-
-
 
 //struct ContentViewForcePreview: PreviewProvider {
 //    static var previews: some View {
