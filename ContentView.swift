@@ -62,7 +62,7 @@ struct ContentView: View {
                         Spacer()
                         Text(player.team)
                     }
-                    .frame(width: 325, height: 25)
+                    .frame(width: UIScreen.main.bounds.size.width - 70, height: 25)
                 }
             }
             
