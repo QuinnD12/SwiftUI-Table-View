@@ -1,40 +1,56 @@
 import SwiftUI
 
-struct Class: Identifiable {
-    let id = UUID()
-    let className: String
-    let period: Int
+enum Position: String {
+    case qb = "QB"
+    case rb = "RB"
+    case wr = "WR"
+    case te = "TE"
+    case dst = "D/ST"
+    case k = "K"
+    case p = "P"
+    case hc = "HC"
+    case flex = "FLEX"
 }
 
+struct Player: Identifiable {
+    let id = UUID()
+    let name: String
+    let position: Position
+}
+
+
 let schedule = [
-    Class(className: "Math", period: 1),
-    Class(className: "Reading", period: 2),
-    Class(className: "Writing", period: 3),
-    Class(className: "Chemistry", period: 4),
-    Class(className: "Biology", period: 5),
-    Class(className: "Gym", period: 6),
-    Class(className: "Study Hall", period: 7),
-    Class(className:"History", period: 8)
+    Player(name: "Trevor Lawrence", position: .qb),
+    Player(name: "Kenneth Walker III", position: .rb),
+    Player(name: "Jamaal Williams", position: .rb),
+    Player(name: "Garrett Wilson", position: .wr),
+    Player(name: "Jaylen Waddle", position: .wr),
+    Player(name: "Cole Kmet", position: .te),
+    Player(name: "Nico Collins", position: .flex),
+    Player(name: "Steelers D/ST", position: .dst),
+    Player(name: "Dustin Hopkins", position: .k),
+    Player(name: "AJ Cole", position: .p),
+    Player(name: "Lions HC", position: .hc)
 ]
 
 struct ContentView: View {
     var body: some View {
         List {
             HStack {
-                Text("Class")
+                Text("Player")
                     .font(.title)
                     .bold()
                 Spacer()
-                Text("Period")
+                Text("Position")
                     .font(.title)
                     .bold()
             }
             
-            ForEach(schedule) { classInstance in
+            ForEach(schedule) { player in
                 HStack {
-                    Text(classInstance.className)
+                    Text(player.name)
                     Spacer()
-                    Text(String(classInstance.period))
+                    Text(player.position.rawValue)
                 }
             }
         }
