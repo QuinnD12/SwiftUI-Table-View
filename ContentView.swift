@@ -35,6 +35,8 @@ let schedule = [
 ]
 
 struct ContentView: View {
+    @State var animVal = 0.0
+    
     var body: some View {
         List {
             HStack {
@@ -63,6 +65,15 @@ struct ContentView: View {
                     .frame(width: 325, height: 25)
                 }
             }
+            
+            Image("football")
+                .resizable()
+                .scaledToFit()
+                .rotationEffect(Angle(degrees: animVal))
+                .animation(.easeInOut(duration: 3).repeatForever(autoreverses: true), value: animVal)
+                .onAppear {
+                    animVal = 20
+                }
         }
     }
 }
